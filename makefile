@@ -1,4 +1,4 @@
-PREFIX=/home/ubuntu/torch/install
+PREFIX=/root/torch/install
 NVCC_PREFIX=/usr/local/cuda-7.5/bin
 CFLAGS=-I$(PREFIX)/include/THC -I$(PREFIX)/include/TH -I$(PREFIX)/include
 # for OSX users add "-lluajit" to LDFLAGS_NVCC, thanks to @subzerofun
