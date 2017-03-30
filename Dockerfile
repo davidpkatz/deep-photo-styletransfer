@@ -1,6 +1,5 @@
-# Start with CUDA Torch dependencies 2
-FROM kaixhin/cuda-torch-deps:2-8.0
-MAINTAINER Kai Arulkumaran <design@kaixhin.com>
+# Start with CUDA
+FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
 
 # Install git, apt-add-repository and dependencies for iTorch
 RUN apt-get update && apt-get install -y \
@@ -44,10 +43,6 @@ ENV LUA_CPATH='/root/torch/install/lib/?.so;'$LUA_CPATH
 # Set ~/torch as working directory
 WORKDIR /root/torch
 
-# Start with CUDA Torch dependencies 2
-#FROM kaixhin/cuda-torch-deps:2-7.5
-MAINTAINER Kai Arulkumaran <design@kaixhin.com>
-
 # Restore Torch7 installation script
 RUN sed -i 's/path_to_nvcc=$(which no_nvcc)/path_to_nvcc=$(which nvcc)/g' install.sh
 
@@ -65,7 +60,7 @@ WORKDIR /root
 
 RUN git clone -b dockerize https://github.com/davidpkatz/deep-photo-styletransfer.git && \
   cd deep-photo-styletransfer/models
-RUN apt-get install -y wget
+#RUN apt-get install -y wget
 WORKDIR /root/deep-photo-styletransfer/models
 RUN wget -c https://gist.githubusercontent.com/ksimonyan/3785162f95cd2d5fee77/raw/bb2b4fe0a9bb0669211cf3d0bc949dfdda173e9e/VGG_ILSVRC_19_layers_deploy.prototxt && \
   wget -c http://www.robots.ox.ac.uk/~vgg/software/very_deep/caffe/VGG_ILSVRC_19_layers.caffemodel && \
