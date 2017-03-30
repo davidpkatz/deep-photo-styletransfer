@@ -1,8 +1,8 @@
 PREFIX=~/torch/install
 NVCC_PREFIX=/usr/local/cuda/bin
-CFLAGS=-I$(PREFIX)/include/THC -I$(PREFIX)/include/TH -I$(PREFIX)/include
+CFLAGS=-I $(PREFIX)/include/THC -I $(PREFIX)/include/TH -I $(PREFIX)/include
 # for OSX users add "-lluajit" to LDFLAGS_NVCC, thanks to @subzerofun
-LDFLAGS_NVCC=-L$(PREFIX)/lib -Xlinker -rpath,$(PREFIX)/lib -lluaT -lTHC -lTH -lpng
+LDFLAGS_NVCC=-L $(PREFIX)/lib -Xlinker -rpath, $(PREFIX)/lib -lluaT -lTHC -lTH -lpng
 
 all: libcuda_utils.so 
 
